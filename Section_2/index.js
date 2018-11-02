@@ -17,13 +17,13 @@ var httpServer = http.createServer(function (req, res) {
 
 // Start the HTTP server
 httpServer.listen(config.httpPort, function () {
-  console.log("The server is listening on port " + config.httpPort);
+  console.log('The server is listening on port ' + config.httpPort);
 });
 
 // Instantiate the HTTPS server
 var httpsServerOptions = {
-  'key' : fs.readFileSync('./https/key.pem'),
-  'cert' : fs.readFileSync('./https/cert.pem')
+  'key': fs.readFileSync('./https/key.pem'),
+  'cert': fs.readFileSync('./https/cert.pem')
 };
 
 var httpsServer = https.createServer(httpsServerOptions, function (req, res) {
@@ -32,7 +32,7 @@ var httpsServer = https.createServer(httpsServerOptions, function (req, res) {
 
 // Start the HTTPS server
 httpsServer.listen(config.httpsPort, function () {
-  console.log("The server is listening on port " + config.httpsPort);
+  console.log('The server is listening on port ' + config.httpsPort);
 });
 
 // All the server logic for both the http and https servers
@@ -99,10 +99,9 @@ var unifiedServer = function (req, res) {
 // Define the handlers
 var handlers = {};
 
-// Sample handler
-handlers.sample = function (data, callback) {
-  // Callback a http status code and a payload object
-  callback(406, {'name': 'sample handler'});
+// Ping handler
+handlers.ping = function (data, callback) {
+  callback(200);
 };
 
 // Not found handler
@@ -112,5 +111,5 @@ handlers.notFound = function (data, callback) {
 
 // Define a request router
 var router = {
-  'sample': handlers.sample
+  'ping': handlers.ping
 };
