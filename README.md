@@ -4,6 +4,6 @@ This directory contains all the work done while following along with the lecture
 
 ## Lecture Sections
 
-### Section 2
+### Section 3
 
 Contains work done on creating a RESTful API with Node
